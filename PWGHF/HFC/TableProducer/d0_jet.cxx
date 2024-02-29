@@ -24,7 +24,7 @@
 #include "PWGHF/DataModel/CandidateReconstructionTables.h"
 #include "PWGHF/DataModel/CandidateSelectionTables.h"
 #include "PWGHF/HFC/DataModel/CorrelationTables.h"
-#include "d0minijet.h"
+//#include "d0minijet.h"
 
 using namespace o2;
 using namespace o2::analysis;
@@ -135,7 +135,7 @@ struct A_D0minijet
       // check decay channel flag for candidate1
       if (!(candidate1.hfflag() & 1 << aod::hf_cand_2prong::DecayType::D0ToPiK)) {
         continue;
-      }    
+      }
        // ========================== Fill mass histo  ================================
       if (candidate1.isSelD0() >= selectionFlagD0) 
       {
