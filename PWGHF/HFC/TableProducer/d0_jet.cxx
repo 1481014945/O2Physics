@@ -52,7 +52,7 @@ double getDeltaPhi(double phiHadron, double phiD)
 }
 
 struct A_D0minijet
-{   
+{
     SliceCache cache;
     Produces<aod::DHadronPair> entryD0HadronPair;
     //Produces<aod::DHadronRecoInfo> entryD0HadronRecoInfo;
@@ -71,7 +71,7 @@ struct A_D0minijet
     Configurable<std::vector<double>> bins{"ptBinsForMassAndEfficiency", std::vector<double>{o2::analysis::hf_cuts_d0_to_pi_k::vecBinsPt}, "pT bin limits for candidate mass plots and efficiency"};
 
     HfHelper hfHelper;
-    
+
     HistogramRegistry registry
     {
         "registry",
@@ -120,7 +120,6 @@ struct A_D0minijet
         return;
       }
       registry.fill(HIST("hMultiplicity"), nTracks);
-    
 
     auto selectedD0CandidatesGrouped = selectedD0Candidates->sliceByCached(aod::hf_cand::collisionId, collision.globalIndex(), cache); 
 
@@ -136,7 +135,7 @@ struct A_D0minijet
       if (!(candidate1.hfflag() & 1 << aod::hf_cand_2prong::DecayType::D0ToPiK)) {
         continue;
       }    
-       // ========================== Fill mass histo  ================================          
+       // ========================== Fill mass histo  ================================
       if (candidate1.isSelD0() >= selectionFlagD0) 
       {
          registry.fill(HIST("hMass"), hfHelper.invMassD0ToPiK(candidate1), candidate1.pt());
@@ -164,8 +163,8 @@ struct A_D0minijet
         if (std::abs(track.dcaXY()) >= 1. || std::abs(track.dcaZ()) >= 1.)
           {continue;} // Remove secondary tracks
 
-        registry.fill(HIST("hTrackCounter"), 2); // fill no. of tracks before soft pion removal    
-        
+        registry.fill(HIST("hTrackCounter"), 2); // fill no. of tracks before soft pion removal
+
         if(track.pt() < cuttriggerpt) {continue;}
         double deltaPhi = getDeltaPhi(track.phi(), candidate1.phi());
         //double deltaEta = track.eta() - candidate1.eta();
@@ -178,7 +177,7 @@ struct A_D0minijet
         {
           setparticlestatus = 2;
         }
-        
+
         entryD0HadronPair(getDeltaPhi(track.phi(), candidate1.phi()),track.eta() - candidate1.eta(),candidate1.pt(),track.pt(),setparticlestatus);
       }
     }
