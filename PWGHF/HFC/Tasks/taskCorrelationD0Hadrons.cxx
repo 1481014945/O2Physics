@@ -52,7 +52,7 @@ AxisSpec axisDeltaPhi = {64, -o2::constants::math::PIHalf, 3. * o2::constants::m
 AxisSpec axisPtD = {10, 0., 10., ""};
 AxisSpec axisPtHadron = {11, 0., 11., ""};
 AxisSpec axisPoolBin = {9, 0., 9., ""};
-AxisSpec axisCorrelationState = {2, 0., 1., ""};
+ConfigurableAxis axisCorrelationState = {2, 0., 2., ""};
 ConfigurableAxis axisMass{"axisMass", {250, 1.65f, 2.15f}, ""};
 
 // definition of vectors for standard ptbin and invariant mass configurables
